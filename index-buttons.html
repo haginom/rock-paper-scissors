@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="styles.css"/>
+    <title>Rock, Paper, Scissors</title>
+    <script>
+
+    const choice = ['rock', 'paper', 'scissors'];
+
+    //function computerPlay will generate computer's choice. 
+    computerPlay = () => choice[Math.floor(Math.random() * 3)];
+
+    //variables for scores
+    let computerScore = 0;
+    let playerScore = 0;
+    let rounds = 0;
+
+    function playRound(playerSelection, computerSelection){
+        playerSelection = playerSelection;
+        if (playerSelection == computerSelection){
+            return playerScore
+        } 
+        if (playerSelection == "rock" && computerSelection == "paper"){
+            playerScore++;
+            return playerScore;
+        } else if (playerSelection == "rock" && computerSelection == "scissors"){
+            computerScore++;
+            return computerScore
+        } else if (playerSelection == "paper" && computerSelection == "rock"){
+            playerScore++;
+            return playerScore;
+        } else if (playerSelection == "paper" && computerSelection == "scissors"){
+            computerScore++;
+            return computerScore
+        } else if (playerSelection == "scissors" && computerSelection == "rock"){
+            computerScore++;
+            return computerScore
+        } else {
+            playerScore++;
+            return playerScore;
+        }
+    }
+
+    </script>
+</head>
+<body>
+    <h1>じゃんけんーぽ！</h1>
+    
+    <div id="results-container">
+        <div id="results">
+            <h3 id="theround">Round 0</h3>
+        </div>
+        <table id="scores">
+            <tr>
+                <th>Player Score</th>
+                <th>Computer Score</th>
+            </tr>
+            <tr>
+                <th></th>
+                <th></th>
+            </tr>
+        </table>
+    </div>
+
+    <div class=players-choice>
+
+    <div class="container">
+        <button class="play-button" id="rock"><img class="icon-image" alt="image-of-rock" src="images/Fist-copy.png"></button>
+    </div>
+    <div class="container">
+        <button class="play-button" id="paper"><img class="icon-image" src="images/Paper.png"></button>
+    </div>
+    <div class="container">
+       
+        <button class="play-button" id="scissors"> <img class="icon-image" src="images/Scissor.png"></button>
+    </div>
+    </div>
+
+
+    <div class=computers-choice></div>
+   
+
+</body>
+</html>
+
+<script>
+
+    function newRound() {
+        // if five rounds have been played 
+        if (rounds >= 5){
+            rounds = 0;
+            if (playerScore > computerScore){
+                console.log("Player Wins!") 
+                console.log(playerScore)
+                computerScore = 0;
+                playerScore = 0;
+            } else if (computerScore > playerScore){
+                console.log("Computer Wins!")  
+                computerScore = 0;
+                playerScore = 0;
+                } else {
+                console.log("It's a Draw") 
+                computerScore = 0;
+                playerScore = 0;
+                };
+            } else {
+                //update score in table 
+                //find a table element with id "scores" & delete row
+                document.getElementById("scores").deleteRow(1);
+                //insert row 
+                let table = document.getElementById("scores"); 
+                let row = table.insertRow(1);
+                let cell1 = row.insertCell(0);
+                let cell2 = row.insertCell(1);   
+
+                cell1.innerHTML = playerScore;
+                cell2.innerHTML = computerScore;
+
+                let computerSelection = computerPlay();
+                //playRound(playerSelection, computerSelection);
+            }
+        };
+
+    
+        let playerSelection 
+        const buttons = document.querySelectorAll('button');
+    
+        buttons.forEach((button) => {
+            button.addEventListener('click', () => {
+            playerSelection = button.id;
+            rounds++;
+            //Update the number of rounds showing on the website
+            const results = document.querySelector('#results');
+            const theround = document.createElement('h3')
+            const myObj = document.getElementById("theround");
+            myObj.remove();
+            theround.setAttribute('id','theround');
+            theround.textContent = "Round " + rounds;
+            results.appendChild(theround);
+            
+            newRound()
+        });  
+        });
+
+</script>
