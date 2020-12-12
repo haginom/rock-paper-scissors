@@ -71,6 +71,7 @@ td, th {
 }
 
 
+
 /* player icons */
 
 .container {
@@ -79,6 +80,7 @@ td, th {
 
 .container button{
     border-radius: 50%;
+    background: transparent;
     border: 1px solid transparent;
     margin: 10px
 }
@@ -90,16 +92,14 @@ button:active{
 .container img{
     display: block;
     max-width: 100%;
-    height: auto
+    height: auto;
+    border-radius: 50%;
 }
 
 #pBtn{
     background: transparent;
 }
 
-.active{
-    background: blue;
-}
 
 /* comp icons */
 .compContainer{
@@ -126,4 +126,5 @@ button:active{
     margin: auto;
     max-width: 100%;
     height: auto;
+    border-radius: 50%;
 }

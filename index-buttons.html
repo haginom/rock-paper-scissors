@@ -18,7 +18,7 @@
     let rounds = 0;
     let playerSelection 
     let winner 
-    let miniWinner
+    let computerSelection
 
     function playRound(playerSelection, computerSelection){
         playerSelection = playerSelection;
@@ -69,30 +69,30 @@
     <div class ='icon'>
         <div class=playersChoice>
             <div class="container">
-                <button id="pBtn"><img class="iconImage" alt="image-of-rock" src="images/icons8-hand-rock-96.png"></button>
+                <button><img class="iconImage" id="rock" alt="image-of-rock" src="images/icons8-hand-rock-96.png"></button>
             </div>
             <div class="container">
-                <button id="pBtn"><img class="iconImage" src="images/icons8-hand-96.png"></button>
+                <button><img class="iconImage" id="paper" src="images/icons8-hand-96.png"></button>
             </div>
             <div class="container">
             
-                <button id="pBtn"> <img class="iconImage" src="images/icon8-scissors-reverse.png"></button>
+                <button> <img class="iconImage" id="scissors" src="images/icon8-scissors-reverse.png"></button>
             </div>
         </div>
         <div class=computersChoice>
             <div class="compContainer">
                 <div class="btn">
-                    <img class="iconImage" alt="image-of-rock" src="images/icons-rock-reverse.png">
+                    <img class="compImage" id="rock" alt="image-of-rock" src="images/icons-rock-reverse.png">
                 </div>
             </div>
                 <div class="compContainer">
                     <div class="btn">
-                        <img class="iconImage" src="images/icon8-comphand.png">
+                        <img class="compImage" id="paper" src="images/icon8-comphand.png">
                     </div>
             </div>
             <div class="compContainer">
                 <div class="btn">
-                    <img class="iconImage" src="images/icons8-hand-scissors-96.png">
+                    <img class="compImage" id="scissors" src="images/icons8-hand-scissors-96.png">
                 </div>
             </div>
         </div>
@@ -123,10 +123,9 @@
         playerScore = 0;
         computerScore = 0;
         } else {
-            let computerSelection = computerPlay();
+            computerSelection = computerPlay();
             playRound(playerSelection, computerSelection);
-            console.log(playerScore)
-            console.log(computerScore)
+            compChoiceButton();
             updateTable();
             }
         };
@@ -174,6 +173,22 @@
             results.appendChild(theround);
         };
 
+        //change comp color
+        function compChoiceButton(){
+            const buttons = document.querySelectorAll('.compImage');
+
+            buttons.forEach((button) => {
+                //if buttons' id = computerchoice then
+                if (button.getAttribute('id') == computerSelection) {
+                    button.style.backgroundColor = 'yellow';
+                } else{
+                    button.style.backgroundColor = 'transparent';
+                }
+            });
+
+        }
+
+
         //event listener for user click - which initiates a game 
         const buttons = document.querySelectorAll('.iconImage');
 
@@ -184,10 +199,8 @@
                         button.style.backgroundColor = 'transparent'
                     })
                     e.target.style.background = 'blue';
+            });
         });
-    })
-
-
 
         //game
         buttons.forEach((button) => {
