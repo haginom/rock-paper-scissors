@@ -11,38 +11,49 @@ body,html {
 /* Scores */
 
 #results{
-    padding-top: 10px;
-    margin: 10px;
+    padding-top: 5px;
+    margin: 5px;
     margin-bottom: 0;
     color: #e6e0cd;
 }
 
 h3{
     text-align: center;
+    font-size: 3vh;
 }
 
 #scores{
-    text-align:center;
+    font-size: 8vh;
+    color: #e6e0cd;
 }
 
 table{
+    position: fixed;
+    bottom: 50%;
+    left: 25%;
+    width: 50%;
     margin-left: auto;
     margin-right: auto;
 }
 td, th {
-    text-align: center;
+    width: 50%;
     padding: 6px;
     margin: 2px;
     letter-spacing: 1px;
-    font-size: 14px;
-    color: #e6e0cd;
-  }
-
-#winner{
+    font-size: 2vh;
     color: #e6e0cd;
     text-align: center;
-    margin: 10px;
+  }
+
+
+
+#winner{
+    text-align: center;
+    font-size: 5vh;
+    color: #e6e0cd;
+    
 }
+
 /*  icons general*/
 .icon{
     display: flex;
@@ -67,7 +78,6 @@ td, th {
 }
 
 .container button{
-    background: transparent;
     border-radius: 50%;
     border: 1px solid transparent;
     margin: 10px
@@ -75,12 +85,20 @@ td, th {
 
 button:active{
     text-shadow: #020202;
-    background: yellow;
 }
 
 .container img{
+    display: block;
     max-width: 100%;
     height: auto
+}
+
+#pBtn{
+    background: transparent;
+}
+
+.active{
+    background: blue;
 }
 
 /* comp icons */
@@ -89,7 +107,6 @@ button:active{
     height: auto;
 
 }
-
 
 .btn{
     width: 112px;

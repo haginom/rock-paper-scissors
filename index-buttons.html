@@ -18,6 +18,7 @@
     let rounds = 0;
     let playerSelection 
     let winner 
+    let miniWinner
 
     function playRound(playerSelection, computerSelection){
         playerSelection = playerSelection;
@@ -26,6 +27,7 @@
         } 
         if (playerSelection == "rock" && computerSelection == "paper"){
             playerScore++;
+
             return playerScore;
         } else if (playerSelection == "rock" && computerSelection == "scissors"){
             computerScore++;
@@ -54,12 +56,12 @@
         </div>
         <table id="scores">
             <tr>
-                <th>Your Score</th>
-                <th>Computer Score</th>
+                <th class="left">Your Score</th>
+                <th class="right">Computer Score</th>
             </tr>
             <tr>
-                <th></th>
-                <th></th>
+                <th class="left">0</th>
+                <th class="right">0</th>
             </tr>
         </table>
     </div>
@@ -67,30 +69,30 @@
     <div class ='icon'>
         <div class=playersChoice>
             <div class="container">
-                <button class="play-button" id="rock"><img class="icon-image" alt="image-of-rock" src="images/icons8-hand-rock-96.png"></button>
+                <button id="pBtn"><img class="iconImage" alt="image-of-rock" src="images/icons8-hand-rock-96.png"></button>
             </div>
             <div class="container">
-                <button class="play-button" id="paper"><img class="icon-image" src="images/icons8-hand-96.png"></button>
+                <button id="pBtn"><img class="iconImage" src="images/icons8-hand-96.png"></button>
             </div>
             <div class="container">
             
-                <button class="play-button" id="scissors"> <img class="icon-image" src="images/icon8-scissors-reverse.png"></button>
+                <button id="pBtn"> <img class="iconImage" src="images/icon8-scissors-reverse.png"></button>
             </div>
         </div>
         <div class=computersChoice>
             <div class="compContainer">
                 <div class="btn">
-                    <img class="icon-image" alt="image-of-rock" src="images/icons-rock-reverse.png">
+                    <img class="iconImage" alt="image-of-rock" src="images/icons-rock-reverse.png">
                 </div>
             </div>
                 <div class="compContainer">
                     <div class="btn">
-                        <img class="icon-image" src="images/icon8-comphand.png">
+                        <img class="iconImage" src="images/icon8-comphand.png">
                     </div>
             </div>
             <div class="compContainer">
                 <div class="btn">
-                    <img class="icon-image" src="images/icons8-hand-scissors-96.png">
+                    <img class="iconImage" src="images/icons8-hand-scissors-96.png">
                 </div>
             </div>
         </div>
@@ -104,8 +106,6 @@
     function newRound() {
         // if five rounds have been played 
         if (rounds >= 5){
-            console.log(playerScore)
-            console.log(computerScore)
             updateTable();
             rounds = 0;
             if (playerScore > computerScore){
@@ -156,14 +156,15 @@
             declaration.appendChild(div);
         }
 
-        //event listener for user click - which initiates a game 
-        const buttons = document.querySelectorAll('button');
-    
-        buttons.forEach((button) => {
-            button.addEventListener('click', () => {
-            playerSelection = button.id;
-            rounds++;
-            //Update the number of rounds showing on the website
+        function removeWinner(){
+            if(document.getElementById("winner")){
+                const element = document.getElementById("winner");
+                element.remove();
+            };
+        }
+
+        //Update the number of rounds showing on the website
+        function updateRound(){
             const results = document.querySelector('#results');
             const theround = document.createElement('h3')
             const myObj = document.getElementById("theround");
@@ -171,8 +172,31 @@
             theround.setAttribute('id','theround');
             theround.textContent = "Round " + rounds;
             results.appendChild(theround);
-            
-            newRound()
+        };
+
+        //event listener for user click - which initiates a game 
+        const buttons = document.querySelectorAll('.iconImage');
+
+        //changing color of buttons 
+        buttons.forEach((button) => {
+            button.addEventListener('click', (e) => {
+                buttons.forEach((button) => {
+                        button.style.backgroundColor = 'transparent'
+                    })
+                    e.target.style.background = 'blue';
+        });
+    })
+
+
+
+        //game
+        buttons.forEach((button) => {
+            button.addEventListener('click', () => {
+            playerSelection = button.id;
+            rounds++;
+            removeWinner();
+            updateRound();
+            newRound();
         });  
         });
 
