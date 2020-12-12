@@ -9,7 +9,7 @@ body,html {
 
 h1{
     text-align: center;
-    margin-top: 40px;
+    margin-top: 20px;
     color:  #e6e0cd;
     letter-spacing: 2px;
 }
@@ -20,10 +20,15 @@ h1{
     padding-top: 10px;
     margin: 10px;
     margin-bottom: 0;
+    color: #e6e0cd;
 }
 
 h3{
     text-align: center;
+}
+
+#scores{
+    text-align:center;
 }
 
 table{
@@ -31,9 +36,16 @@ table{
     margin-right: auto;
 }
 td, th {
-    text-align: left;
-    padding: 8px;
+    text-align: center;
+    padding: 6px;
+    font-size: 14px;
+    color: #e6e0cd;
   }
+
+.winner{
+    color: #e6e0cd;
+    text-align: center;
+}
 
 /* icons */
 
