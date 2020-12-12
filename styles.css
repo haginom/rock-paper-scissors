@@ -7,12 +7,6 @@ body,html {
     color: #020202;
   }
 
-h1{
-    text-align: center;
-    margin-top: 20px;
-    color:  #e6e0cd;
-    letter-spacing: 2px;
-}
 
 /* Scores */
 
@@ -38,43 +32,81 @@ table{
 td, th {
     text-align: center;
     padding: 6px;
+    margin: 2px;
+    letter-spacing: 1px;
     font-size: 14px;
     color: #e6e0cd;
   }
 
-.winner{
+#winner{
     color: #e6e0cd;
     text-align: center;
+    margin: 10px;
+}
+/*  icons general*/
+.icon{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 80vh;
 }
 
-/* icons */
+.playersChoice{
+    margin-left: 5%;
+}
+
+.computersChoice{
+    margin-right: 5%;
+}
+
+
+/* player icons */
 
 .container {
-    justify-content: space-between;
-    margin: 0 auto;
-    width: 300px;
     height: auto;
 }
 
 .container button{
-    overflow: hidden;
-    margin: 20px;
+    background: transparent;
     border-radius: 50%;
-    border: 10px black;
-    object-fit: cover;
-    background:  #e6e0cd;
+    border: 1px solid transparent;
+    margin: 10px
 }
 
 button:active{
-
-    border-radius: 50%;
-    background: #ffc600;
+    text-shadow: #020202;
+    background: yellow;
 }
 
 .container img{
-    display: flex;
-    justify-content: center;
-    align-items: center;
     max-width: 100%;
     height: auto
+}
+
+/* comp icons */
+.compContainer{
+    width: 100%;
+    height: auto;
+
+}
+
+
+.btn{
+    width: 112px;
+    height: 105px;
+    background-color: transparent;
+    padding: 0px 1px 0px 1px;
+    display: flex;
+    justify-content: center;
+    margin: 10px;
+    border-radius: 50%;
+    border: 1px solid transparent;
+
+}
+
+.compContainer img{
+    display: block;
+    margin: auto;
+    max-width: 100%;
+    height: auto;
 }

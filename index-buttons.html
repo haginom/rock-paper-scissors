@@ -48,15 +48,13 @@
     </script>
 </head>
 <body>
-    <h1>じゃんけんーぽ！</h1>
-    
     <div id="resultsContainer">
         <div id="results">
             <h3 id="theround">Round 0</h3>
         </div>
         <table id="scores">
             <tr>
-                <th>Player Score</th>
+                <th>Your Score</th>
                 <th>Computer Score</th>
             </tr>
             <tr>
@@ -66,20 +64,37 @@
         </table>
     </div>
 
-    <div class=players-choice>
-
-    <div class="container">
-        <button class="play-button" id="rock"><img class="icon-image" alt="image-of-rock" src="images/Fist-copy.png"></button>
+    <div class ='icon'>
+        <div class=playersChoice>
+            <div class="container">
+                <button class="play-button" id="rock"><img class="icon-image" alt="image-of-rock" src="images/icons8-hand-rock-96.png"></button>
+            </div>
+            <div class="container">
+                <button class="play-button" id="paper"><img class="icon-image" src="images/icons8-hand-96.png"></button>
+            </div>
+            <div class="container">
+            
+                <button class="play-button" id="scissors"> <img class="icon-image" src="images/icon8-scissors-reverse.png"></button>
+            </div>
+        </div>
+        <div class=computersChoice>
+            <div class="compContainer">
+                <div class="btn">
+                    <img class="icon-image" alt="image-of-rock" src="images/icons-rock-reverse.png">
+                </div>
+            </div>
+                <div class="compContainer">
+                    <div class="btn">
+                        <img class="icon-image" src="images/icon8-comphand.png">
+                    </div>
+            </div>
+            <div class="compContainer">
+                <div class="btn">
+                    <img class="icon-image" src="images/icons8-hand-scissors-96.png">
+                </div>
+            </div>
+        </div>
     </div>
-    <div class="container">
-        <button class="play-button" id="paper"><img class="icon-image" src="images/Paper.png"></button>
-    </div>
-    <div class="container">
-       
-        <button class="play-button" id="scissors"> <img class="icon-image" src="images/Scissor.png"></button>
-    </div>
-    </div>
-    <div class=computers-choice></div>
 
 </body>
 </html>
@@ -129,6 +144,7 @@
         }
 
         function declareWinner(){
+        //declares winner, if winner from previous round already declares deletes winner
             if(document.getElementById("winner")){
                 const element = document.getElementById("winner");
                 element.remove();
